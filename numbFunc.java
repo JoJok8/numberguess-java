@@ -3,6 +3,7 @@
 import java.util.Random;
 import java.util.Scanner;
 import java.lang.System;
+import java.lang.Math;
 
 public class numbFunc {
   private static int guesses;
@@ -20,27 +21,23 @@ public class numbFunc {
   
   public static int pick(boolean max){
     if(max == true){
-    Random rand = new Random(8272);
-    int num = rand.nextInt();
-    num = (num * 100)+1;
-    return num;
+    int range = (100 - 1) + 1;
+    return num = (int)(Math.random() * range) +1;
     } else if(max == false){
-    Random rand = new Random(8272);
-    int num = rand.nextInt();
-    num = (num * 1000)+1;
-    return num;
+    int range = (100 - 1) + 1;
+    return num = (int)(Math.random() * range) +1;
     }
   return 0;
   }
   
   public static String check(int guess){
     if(guesses >0){  
-    if(guess > num){
+    if(guess < num){
         System.out.println("You guessed " + guess + ".");
         System.out.println("The answer is higher! Guess again.");
         guesses = guesses - 1;
         System.out.println("You have " + guesses + " guesses left.");
-      }else if(guess < num){
+      }else if(guess > num){
         System.out.println("You guessed " + guess + ".");
         System.out.println("The answer is lower! Guess again.");
         guesses = guesses - 1;
@@ -54,6 +51,7 @@ public class numbFunc {
       }                     
     }else if (guesses == 0){
     System.out.println("You're out of guesses! You lose.");
+    System.out.println("The number you had to guess was " + num + ".");
     System.out.println("Please restart the program to play again.");
     System.exit(0);
     
